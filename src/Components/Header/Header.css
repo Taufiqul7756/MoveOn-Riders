@@ -1,10 +1,12 @@
 .header{
     height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .logo{
     height: 50px;
-    margin-left: 300px;
-    margin-top: 0px;
+    margin-left: 50px;
 }
 
 /* .title-container{
@@ -13,7 +15,8 @@
     font-size: 2em;
 } */
 .nav{
-    margin-left: 700px;
+    margin-left: auto;
+    margin-right: 50px;
 }
 .nav li{
     display: inline;

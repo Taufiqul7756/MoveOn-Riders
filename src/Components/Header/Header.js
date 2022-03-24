@@ -7,7 +7,7 @@ import "../Header/Header.css";
 const Header = () => {
   return (
     <div className="header">
-      <img className="logo" src={logo} alt="" />
+      <img className="logo" src="https://i.ibb.co/GVnPhTc/logo.webp" alt="logo" />
       <nav className="nav">
         <ul>
           <li>
@@ -21,14 +21,25 @@ const Header = () => {
               Blog
             </Link>
           </li>
+          <li>
+            <Link className="btn-blog" to="/contact">
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link className="btn-blog" to="/login">
+              Login
+            </Link>
+          </li>
         </ul>  
       </nav>
-
-      <div >
-        <Category></Category>
-      </div>
     </div>
   );
 };
 
 export default Header;
+
+{/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/VB4JGVG/Frame.png" alt="Frame" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/MSY9PnW/Frame-1.png" alt="Frame-1" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/7zCNRdY/Frame-2.png" alt="Frame-2" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/vQVhNXm/Group.png" alt="Group" border="0"></a> */}
