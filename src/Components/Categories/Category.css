@@ -1,4 +1,11 @@
-.body-container{
-    margin-left: 50px;
-    margin-top: 50px;
+.card-container {
+  margin-left: 50px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: "center";
 }
+
+.card-img{
+    height: 80%;
+    width: 80%;
+} 
