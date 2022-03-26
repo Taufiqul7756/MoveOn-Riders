@@ -22,12 +22,12 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="btn-blog" to="/contact">
+            <Link className="btn-contact" to="/contact">
               Contact
             </Link>
           </li>
           <li>
-            <Link className="btn-blog" to="/login">
+            <Link className="btn-login" to="/login">
               Login
             </Link>
           </li>
