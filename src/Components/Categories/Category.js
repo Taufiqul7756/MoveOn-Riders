@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import '../Categories/Category.css'
 
 
-const Category = ({vehicle: vehicle}) => {
+const Category = ({vehicle}) => {
 
   const handleClick = () => {
     console.log("Clicked");
@@ -25,7 +25,7 @@ const Category = ({vehicle: vehicle}) => {
         className="card-img"
           component="img"
           height="140"
-          //   backgroundImage="/src/images/Frame.png"
+          // backgroundImage="/src/images/Bg.png"
           image={vehicle.imgUrl}
           alt="bike"
         />
