@@ -1,5 +1,6 @@
 import React from 'react';
 import Category from '../Categories/Category';
+import '../Home/Home.css'
 
 
 const Home = () => {
@@ -38,7 +39,7 @@ const Home = () => {
     return (
         <div className="card-container">
             {
-                vehicleName.map(vehicle =><Category vahicle={vehicle} />)
+                vehicleName.map(vehicle =><Category vehicle={vehicle} />)
             }
             
         </div>
