@@ -26,7 +26,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const theme = createTheme();
 
-const SignIn =()=> {
+const SignIn = () => {
   const [loggedInUser, setloggedInUser] = useContext(UserContext);
   const history = useHistory();
   const location = useLocation();
@@ -43,7 +43,7 @@ const SignIn =()=> {
         const { displayName, email } = result.user;
         const signedInUser = {
           name: displayName,
-          email: email
+          email: email,
         };
         setloggedInUser(signedInUser);
         history.replace(from);
@@ -70,6 +70,7 @@ const SignIn =()=> {
     <ThemeProvider theme={theme}>
       <div>
         <button onClick={handleGoogleSignIn}>Google Sign in</button>
+        
       </div>
       <Container className="signIn-container" component="main" maxWidth="xs">
         <CssBaseline />
@@ -142,5 +143,5 @@ const SignIn =()=> {
       </Container>
     </ThemeProvider>
   );
-}
+};
 export default SignIn;

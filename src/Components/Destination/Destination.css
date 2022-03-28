@@ -1,0 +1,12 @@
+.destination-container{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+}
+.search-container{
+    border:1px solid black;
+}
+.map-container{
+
+}
