@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useContext } from "react";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,49 +13,22 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../Login/SignIn.css";
-import firebaseConfig from "./firebase.config";
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInWithRedirect,
-} from "firebase/auth";
-import { UserContext } from "../../App";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 const theme = createTheme();
 
+
 const SignIn = () => {
-  const [loggedInUser, setloggedInUser] = useContext(UserContext);
   const history = useHistory();
-  const location = useLocation();
-  const { from } = location.state || { from: { pathname: "" } };
-  const app = initializeApp(firebaseConfig);
 
-  const handleGoogleSignIn = () => {
-    const googleProvider = new GoogleAuthProvider();
-    const auth = getAuth();
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-
-        const { displayName, email } = result.user;
-        const signedInUser = {
-          name: displayName,
-          email: email,
-        };
-        setloggedInUser(signedInUser);
-        history.replace(from);
-        console.log(signedInUser);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      });
-  };
+  const handleClick = () => {
+    console.log("Clicked");
+    let path = "/signup"; 
+    history.push(path);
+    
+  }
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,10 +41,7 @@ const SignIn = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <button onClick={handleGoogleSignIn}>Google Sign in</button>
-        
-      </div>
+      
       <Container className="signIn-container" component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -133,7 +103,7 @@ const SignIn = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="signup" variant="body2">
+                <Link className="cursor" onClick={handleClick} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
