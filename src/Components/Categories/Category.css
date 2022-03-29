@@ -9,6 +9,8 @@ body{
   margin-top: 50px;
   display: flex;
   justify-content: "center";
+  cursor: pointer;
+  
 }
 
 .card-img{

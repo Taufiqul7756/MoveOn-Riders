@@ -9,12 +9,17 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import '../Categories/Category.css'
+import Destination from "../Destination/Destination";
 
 
 const Category = ({vehicle}) => {
+  const history = useHistory();
 
   const handleClick = () => {
     console.log("Clicked");
+    let path = "/destination"; 
+    history.push(path);
+    
   }
 
     console.log(vehicle);
