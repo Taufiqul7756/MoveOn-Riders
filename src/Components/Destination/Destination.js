@@ -26,7 +26,7 @@ const Destination = () => {
         </Card>
       </div>
 
-      <div className="right-container">
+      <div className="image-container">
         <img src="https://i.ibb.co/4dZDPDy/Map.png" alt="" />
       </div>
     </div>

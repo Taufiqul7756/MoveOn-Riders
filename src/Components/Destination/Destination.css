@@ -3,12 +3,14 @@
     flex-direction:row;
     align-items:center;
     justify-content:center;
+
 }
 .search-container{
     display:flex;
     flex-direction:row;
     align-items:center;
     justify-content:center;
+    margin-bottom: 225px;
 }
 .search-container button {
     background-color: rgb(143, 133, 133);
@@ -25,14 +27,14 @@
     
     
 }
-.right-container{
+.image-container{
     display:flex;
     flex-direction:row;
     align-items:center;
     justify-content:center;
 
 }
-.right-container img {
+.image-container img {
     width: 100%;
     height: 100%;
     margin-left: 200px;
