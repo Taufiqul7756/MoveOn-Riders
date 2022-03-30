@@ -18,18 +18,28 @@ import firebaseConfig from "./firebase.config";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  signOut,
   signInWithPopup,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithRedirect,
 } from "firebase/auth";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const theme = createTheme();
 
 const SignUp = () => {
   const [loggedInUser, setloggedInUser] = useContext(UserContext);
+  const [user, setUser] = useState({
+    isSignedIn: false,
+    newUser: false,
+    name: "",
+    email: "",
+    password: "",
+    photo: "",
+  });
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
@@ -43,6 +53,7 @@ const SignUp = () => {
 
   const handleGoogleSignIn = () => {
     const googleProvider = new GoogleAuthProvider();
+
     const auth = getAuth();
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -63,6 +74,50 @@ const SignUp = () => {
         const email = error.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
+  };
+
+  const handleFbSignIn = () => {
+    const fbProvider = new FacebookAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, fbProvider)
+      .then((result) => {
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const { displayName, email } = result.user;
+        const signedInUser = {
+          name: displayName,
+          email: email,
+        };
+        // const user = result.user;
+        setloggedInUser(signedInUser);
+        history.replace(from);
+        console.log(signedInUser);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(errorCode, errorMessage);
+      });
+  };
+
+  const handleSignOut = () => {
+    //console.log('Sign Out Clicked');
+
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        const signedOutUser = {
+          isSignedOut: false,
+          name: "",
+          email: "",
+          photo: "",
+          error: "",
+          success: false,
+        };
+        setUser(signedOutUser);
+      })
+      .catch((error) => {});
   };
 
   const handleSubmit = (event) => {
@@ -167,7 +222,14 @@ const SignUp = () => {
                 >
                   Sign in with Google
                 </button>
-               
+                <button
+                  onClick={handleFbSignIn}
+                  type="button"
+                  class="login-with-google-btn"
+                >
+                  Sign in with Facebook
+                </button>
+
                 <Link className="cursor" onClick={handleClick} variant="body2">
                   Already have an account? Sign in
                 </Link>
